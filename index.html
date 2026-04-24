@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="app-build" content="20260424-1100">
+  <title>いろはde歴史® — 楽しく学ぶ日本史カルタ</title>
+  <meta name="description" content="いろは47文字＋んで綴る、日本史を楽しく学ぶカルタ・アプリ。48枚のカルタで縄文から平成までを一気に学ぼう。">
+  <meta property="og:title" content="いろはde歴史® — 楽しく学ぶ日本史カルタ">
+  <meta property="og:description" content="48枚のカルタで縄文から平成までを楽しく学べる、日本史学習アプリ。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://irohaderekishi.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { font-family: 'Noto Sans JP', sans-serif; color: #2a2a2a; background: #fdf9f3; line-height: 1.7; }
+
+    /* 背景和風紋様 */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(184, 37, 40, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ヒーロー */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 40px;
+      background:
+        linear-gradient(180deg, rgba(253, 249, 243, 0) 0%, rgba(253, 249, 243, 0.8) 100%),
+        radial-gradient(ellipse at center, rgba(184, 37, 40, 0.08) 0%, transparent 70%);
+    }
+    .brand-mark {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      color: #b82528;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .brand-mark .reg { font-size: 0.5em; vertical-align: super; }
+    .tagline {
+      font-size: clamp(14px, 2.4vw, 18px);
+      color: #888;
+      margin-bottom: 48px;
+      letter-spacing: 0.1em;
+    }
+
+    h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(36px, 7vw, 64px);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 24px;
+      color: #2a2a2a;
+    }
+    h1 .accent { color: #b82528; }
+    h1 .sub {
+      display: block;
+      font-size: 0.5em;
+      color: #888;
+      font-weight: 400;
+      margin-top: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .lead {
+      font-size: clamp(15px, 2.2vw, 18px);
+      max-width: 640px;
+      margin: 0 auto 48px;
+      color: #555;
+    }
+
+    /* CTA ボタン */
+    .cta-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
+    .cta-primary {
+      background: linear-gradient(135deg, #b82528, #8f1c1f);
+      color: white;
+      box-shadow: 0 6px 20px rgba(184, 37, 40, 0.3);
+    }
+    .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(184, 37, 40, 0.4); }
+    .cta-secondary {
+      background: white;
+      color: #b82528;
+      border: 2px solid #b82528;
+    }
+    .cta-secondary:hover { background: #fff5f0; }
+
+    /* カードプレビュー */
+    .preview {
+      padding: 80px 24px;
+      background: #fff;
+    }
+    .preview h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .preview .sub-heading {
+      text-align: center;
+      color: #888;
+      margin-bottom: 48px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .demo-card {
+      aspect-ratio: 2/3;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 48px;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .demo-card:hover { transform: translateY(-6px) rotate(-2deg); }
+    .dc-red { background: #fef2f2; color: #b82528; border: 2px solid #fca5a5; }
+    .dc-yellow { background: #fefce8; color: #a16207; border: 2px solid #fde047; }
+    .dc-green { background: #f0fdf4; color: #166534; border: 2px solid #86efac; }
+    .dc-blue { background: #eff6ff; color: #1e40af; border: 2px solid #93c5fd; }
+    .dc-purple { background: #faf5ff; color: #7e22ce; border: 2px solid #d8b4fe; }
+
+    /* 特徴 */
+    .features {
+      padding: 80px 24px;
+      background: #fdf9f3;
+    }
+    .features h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .feat {
+      text-align: center;
+      padding: 32px 20px;
+    }
+    .feat-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .feat h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #b82528;
+    }
+    .feat p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* About */
+    .about {
+      padding: 80px 24px;
+      background: #fff;
+      text-align: center;
+    }
+    .about h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      margin-bottom: 32px;
+    }
+    .about p {
+      max-width: 720px;
+      margin: 0 auto 16px;
+      color: #555;
+    }
+    .about .author {
+      margin-top: 32px;
+      font-family: 'Noto Serif JP', serif;
+      color: #b82528;
+    }
+
+    /* Footer */
+    footer {
+      background: #2a2a2a;
+      color: #999;
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer a { color: #ccc; text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: white; }
+    .copyright { margin-top: 16px; opacity: 0.6; }
+
+    @media (max-width: 640px) {
+      .cta { padding: 14px 28px; font-size: 15px; }
+      .cta-group { flex-direction: column; align-items: stretch; }
+      .card-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      .demo-card { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="brand-mark">いろは<span style="color:#2a2a2a">de</span>歴史<span class="reg">®</span></div>
+    <div class="tagline">カルタで学ぶ日本史</div>
+
+    <h1>
+      いろは47文字＋<span class="accent">ん</span>で、<br>
+      日本の<span class="accent">一万年</span>を旅する。
+      <span class="sub">縄文から平成まで、48枚のカルタで</span>
+    </h1>
+
+    <p class="lead">
+      古きよき「いろはかるた」の形式に、日本史の重要な出来事を一枚ずつ。<br>
+      遊びながら、自然と歴史が身につく——そんな学習体験を、ブラウザで。
+    </p>
+
+    <div class="cta-group">
+      <a href="/app/" class="cta cta-primary">
+        🎮 アプリを始める
+      </a>
+      <a href="#about" class="cta cta-secondary">
+        📖 詳しく知る
+      </a>
+    </div>
+  </section>
+
+  <!-- カードプレビュー -->
+  <section class="preview">
+    <div class="wrap">
+      <h2>48枚のカルタ、5つの彩り</h2>
+      <p class="sub-heading">時代ごとに色分けされたカルタで、歴史の流れが一目瞭然</p>
+
+      <div class="card-grid">
+        <div class="demo-card dc-red">い</div>
+        <div class="demo-card dc-yellow">へ</div>
+        <div class="demo-card dc-green">る</div>
+        <div class="demo-card dc-blue">た</div>
+        <div class="demo-card dc-purple">な</div>
+        <div class="demo-card dc-red">ほ</div>
+        <div class="demo-card dc-yellow">ち</div>
+        <div class="demo-card dc-green">か</div>
+        <div class="demo-card dc-blue">し</div>
+        <div class="demo-card dc-purple">ん</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特徴 -->
+  <section class="features">
+    <div class="wrap">
+      <h2>3つの楽しみ方</h2>
+
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="feat-icon">🀄</div>
+          <h3>かるた遊び</h3>
+          <p>読み札を見て、絵札を当てよう。時代別・難易度別で遊べる、本格カルタゲーム。</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">🧠</div>
+          <h3>神経衰弱</h3>
+          <p>記憶力を鍛えながら、48枚のカルタと仲良くなろう。</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">📜</div>
+          <h3>時代クイズ</h3>
+          <p>カルタに描かれた出来事は、どの時代？縄文から平成まで、16時代を判別！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2>「いろはde歴史®」とは</h2>
+      <p>
+        いろは47文字＋「ん」の、48音それぞれに日本史の重要な出来事を割り当てた学習カルタ。<br>
+        子どもから大人まで、遊びながら自然と日本史の流れが身につくように設計されています。
+      </p>
+      <p>
+        縄文土器、聖徳太子、織田信長、明治維新、太平洋戦争——<br>
+        一万年の歴史が、48枚のカルタに凝縮。学習モードでは、各時代の物語と、カルタ一枚一枚の詳しい解説も読めます。
+      </p>
+      <div class="author">
+        原作：松井 聰
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div>
+        <a href="/app/">アプリ</a> ・
+        <a href="#about">概要</a>
+      </div>
+      <div class="copyright">
+        © 2026 松井 聰 / いろはde歴史®<br>
+        All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
