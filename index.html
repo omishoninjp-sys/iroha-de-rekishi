@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="app-build" content="20260429-1130">
+  <meta name="app-build" content="20260429-1200">
   <title>いろはde歴史® — 楽しく学ぶ日本史カルタ</title>
   <meta name="description" content="いろは47文字＋んで綴る、日本史を楽しく学ぶカルタ・アプリ。48枚のカルタで縄文から平成までを一気に学ぼう。">
   <meta property="og:title" content="いろはde歴史® — 楽しく学ぶ日本史カルタ">
@@ -181,6 +181,16 @@
     .feat-icon {
       font-size: 48px;
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+    }
+    .feat-icon svg {
+      transition: transform 0.3s ease;
+    }
+    .feat:hover .feat-icon svg {
+      transform: scale(1.1) rotate(-3deg);
     }
     .feat h3 {
       font-family: 'Noto Serif JP', serif;
@@ -249,7 +259,7 @@
     </h1>
 
     <p class="lead">
-      古きよき「いろはかるた」の形式に、日本史の重要な出来事を一枚ずつ。<br>
+      古きよき「いろはカルタ」の形式に、日本史の重要な出来事を一枚ずつ。<br>
       遊びながら、自然と歴史が身につく——そんな学習体験を、ブラウザで。
     </p>
 
@@ -291,17 +301,58 @@
 
       <div class="feat-grid">
         <div class="feat">
-          <div class="feat-icon">🀄</div>
-          <h3>かるた遊び</h3>
+          <div class="feat-icon">
+            <!-- カルタ遊び：2張卡片疊放，一張上面寫「い」 -->
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <!-- 後面那張卡（藍） -->
+              <rect x="10" y="14" width="32" height="44" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="2" transform="rotate(-8 26 36)"/>
+              <!-- 前面那張卡（黃，較大） -->
+              <rect x="22" y="10" width="32" height="44" rx="4" fill="#fefce8" stroke="#fde047" stroke-width="2"/>
+              <!-- 前卡上的「い」 -->
+              <text x="38" y="40" font-family="serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#a16207">い</text>
+            </svg>
+          </div>
+          <h3>カルタ遊び</h3>
           <p>読み札を見て、絵札を当てよう。時代別・難易度別で遊べる、本格カルタゲーム。</p>
         </div>
         <div class="feat">
-          <div class="feat-icon">🧠</div>
+          <div class="feat-icon">
+            <!-- 神経衰弱：4張卡片排成2x2，1張翻開 -->
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <!-- 左上（綠） -->
+              <rect x="6" y="10" width="22" height="22" rx="3" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+              <text x="17" y="26" font-family="serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#166534">？</text>
+              <!-- 右上（紫） -->
+              <rect x="36" y="10" width="22" height="22" rx="3" fill="#faf5ff" stroke="#d8b4fe" stroke-width="2"/>
+              <text x="47" y="26" font-family="serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#7e22ce">？</text>
+              <!-- 左下（紅，翻開） -->
+              <rect x="6" y="36" width="22" height="22" rx="3" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
+              <text x="17" y="53" font-family="serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#b82528">い</text>
+              <!-- 右下（藍） -->
+              <rect x="36" y="36" width="22" height="22" rx="3" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+              <text x="47" y="52" font-family="serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#1e40af">？</text>
+            </svg>
+          </div>
           <h3>神経衰弱</h3>
           <p>記憶力を鍛えながら、48枚のカルタと仲良くなろう。</p>
         </div>
         <div class="feat">
-          <div class="feat-icon">📜</div>
+          <div class="feat-icon">
+            <!-- 時代クイズ：時計と日本史の象徴 -->
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <!-- 卷軸的木桿頂端 -->
+              <rect x="8" y="6" width="48" height="6" rx="3" fill="#b82528"/>
+              <!-- 卷軸主體（米色） -->
+              <rect x="12" y="12" width="40" height="40" fill="#fef9e7" stroke="#d4af37" stroke-width="1.5"/>
+              <!-- 卷軸內的橫線 = 文字 -->
+              <line x1="18" y1="22" x2="46" y2="22" stroke="#a16207" stroke-width="1.5" opacity="0.6"/>
+              <line x1="18" y1="28" x2="40" y2="28" stroke="#a16207" stroke-width="1.5" opacity="0.6"/>
+              <!-- 大「？」在卷軸中央 -->
+              <text x="32" y="46" font-family="serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#b82528">？</text>
+              <!-- 卷軸的木桿底端 -->
+              <rect x="8" y="52" width="48" height="6" rx="3" fill="#b82528"/>
+            </svg>
+          </div>
           <h3>時代クイズ</h3>
           <p>カルタに描かれた出来事は、どの時代？縄文から平成まで、16時代を判別！</p>
         </div>
