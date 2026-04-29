@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="app-build" content="20260429-1200">
+  <meta name="app-build" content="20260429-1400">
   <title>いろはde歴史® - Japanese History Learning App</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -99,7 +99,7 @@
   
   <!-- ビルド時刻表示（右下に小さく） -->
   <div id="build-stamp" style="position:fixed;bottom:4px;right:6px;font-size:9px;color:#aaa;background:rgba(255,255,255,0.7);padding:1px 5px;border-radius:4px;z-index:9999;font-family:monospace;pointer-events:none;">
-    v20260429-1200
+    v20260429-1400
   </div>
   
   <script type="text/babel">
@@ -1047,7 +1047,7 @@
         tries: '挑戦',
         pairs: 'ペア',
         karuta: 'カルタ遊び',
-        memory: '神経衰弱',
+        memory: 'ペア探し',
         quiz: '時代クイズ',
         eraGame: '時代別遊び',
         selectEra: '時代を選んでください',
@@ -1916,19 +1916,22 @@
         <div className="animate-fadeIn">
           <h2 className="text-xl font-bold text-center mb-6">{t.gameMenu}</h2>
           
-          {/* 主要遊戲 */}
-          <div className="grid grid-cols-3 gap-3 mb-8 max-w-lg mx-auto">
-            <button onClick={() => onSelect('karuta', null)} className="bg-gradient-to-br from-red-500 to-red-600 text-white py-6 px-3 rounded-2xl card-shadow card-hover transition">
-              <div className="text-3xl mb-2">🎴</div>
-              <div className="font-bold text-sm">{t.karuta}</div>
+          {/* 主要遊戲（イラストボタン） */}
+          <div className="space-y-3 mb-8 max-w-md mx-auto">
+            <button onClick={() => onSelect('karuta', null)}
+              className="block w-full hover:scale-[1.02] active:scale-[0.98] transition-transform">
+              <img src="buttons/btn_karuta.webp" srcSet="buttons/btn_karuta.webp 1x, buttons/btn_karuta@2x.webp 2x"
+                alt={t.karuta} className="w-full h-auto" />
             </button>
-            <button onClick={() => onSelect('memory', null)} className="bg-gradient-to-br from-blue-500 to-blue-600 text-white py-6 px-3 rounded-2xl card-shadow card-hover transition">
-              <div className="text-3xl mb-2">🧠</div>
-              <div className="font-bold text-sm">{t.memory}</div>
+            <button onClick={() => onSelect('memory', null)}
+              className="block w-full hover:scale-[1.02] active:scale-[0.98] transition-transform">
+              <img src="buttons/btn_pair.webp" srcSet="buttons/btn_pair.webp 1x, buttons/btn_pair@2x.webp 2x"
+                alt={t.memory} className="w-full h-auto" />
             </button>
-            <button onClick={() => onSelect('quiz', null)} className="bg-gradient-to-br from-green-500 to-green-600 text-white py-6 px-3 rounded-2xl card-shadow card-hover transition">
-              <div className="text-3xl mb-2">📚</div>
-              <div className="font-bold text-sm">{t.quiz}</div>
+            <button onClick={() => onSelect('quiz', null)}
+              className="block w-full hover:scale-[1.02] active:scale-[0.98] transition-transform">
+              <img src="buttons/btn_quiz.webp" srcSet="buttons/btn_quiz.webp 1x, buttons/btn_quiz@2x.webp 2x"
+                alt={t.quiz} className="w-full h-auto" />
             </button>
           </div>
 
