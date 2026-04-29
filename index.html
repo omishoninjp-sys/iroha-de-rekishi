@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="app-build" content="20260429-1400">
+  <meta name="app-build" content="20260429-1600">
   <title>いろはde歴史® — 楽しく学ぶ日本史カルタ</title>
   <meta name="description" content="いろは47文字＋んで綴る、日本史を楽しく学ぶカルタ・アプリ。48枚のカルタで縄文から平成までを一気に学ぼう。">
   <meta property="og:title" content="いろはde歴史® — 楽しく学ぶ日本史カルタ">
@@ -131,7 +131,7 @@
     }
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      grid-template-columns: repeat(5, 1fr);
       gap: 16px;
       max-width: 900px;
       margin: 0 auto;
@@ -155,6 +155,40 @@
     .dc-green { background: #f0fdf4; color: #166534; border: 2px solid #86efac; }
     .dc-blue { background: #eff6ff; color: #1e40af; border: 2px solid #93c5fd; }
     .dc-purple { background: #faf5ff; color: #7e22ce; border: 2px solid #d8b4fe; }
+
+    /* 補足説明 */
+    .preview-note {
+      max-width: 720px;
+      margin: 36px auto 0;
+      padding: 24px 28px;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef9c3 100%);
+      border-radius: 16px;
+      border: 2px solid #fde68a;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.5);
+    }
+    .preview-note p {
+      font-size: clamp(14px, 2.2vw, 17px);
+      color: #555;
+      line-height: 2;
+      margin: 0;
+    }
+    .preview-note strong {
+      color: #b82528;
+    }
+    .period-tag {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 700;
+      margin: 0 3px;
+      white-space: nowrap;
+    }
+    .period-ancient   { background: #fef2f2; color: #b82528; border: 1.5px solid #fca5a5; }
+    .period-medieval  { background: #fefce8; color: #a16207; border: 1.5px solid #fde047; }
+    .period-early-modern { background: #f0fdf4; color: #166534; border: 1.5px solid #86efac; }
+    .period-modern    { background: #faf5ff; color: #7e22ce; border: 1.5px solid #d8b4fe; }
 
     /* 特徴 */
     .features {
@@ -240,8 +274,8 @@
     @media (max-width: 640px) {
       .cta { padding: 14px 28px; font-size: 15px; }
       .cta-group { flex-direction: column; align-items: stretch; }
-      .card-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
-      .demo-card { font-size: 32px; }
+      .card-grid { gap: 6px; padding: 0 8px; }
+      .demo-card { font-size: 24px; border-radius: 8px; }
     }
   </style>
 </head>
@@ -290,6 +324,18 @@
         <div class="demo-card dc-green">あ</div>
         <div class="demo-card dc-blue">み</div>
         <div class="demo-card dc-purple">せ</div>
+      </div>
+
+      <div class="preview-note">
+        <p>
+          しかも、<strong>「いろは歌」の4つの句</strong>に合わせて
+          <span class="period-tag period-ancient">古代</span>
+          <span class="period-tag period-medieval">中世</span>
+          <span class="period-tag period-early-modern">近世</span>
+          <span class="period-tag period-modern">近現代</span>
+          に分かれていて、<br>
+          <strong>歴史の流れを大まかに理解する</strong>ことも出来ます‼️
+        </p>
       </div>
     </div>
   </section>
